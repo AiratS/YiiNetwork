@@ -1,0 +1,46 @@
+version: "3.7"
+
+services:
+  nginx:
+    build:
+      context: ./nginx
+      args:
+        SERVER_NAME: yiinetwork.loc
+        PHP_FPM_ADDRESS: php
+        PHP_FPM_PORT: 9000
+    ports:
+      - "80:80"
+    working_dir: /app
+    volumes:
+      - ../:/app
+    depends_on:
+      - php
+
+  php:
+    build:
+      context: ./php
+      args:
+        UID: ${UID:-1000}
+        GID: ${GID:-1000}
+    environment:
+      PHP_IDE_CONFIG: "serverName=localhost"
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    working_dir: /app
+    volumes:
+      - ../:/app
+      - ./php/php.ini:/usr/local/etc/php/php.ini
+
+  postgres:
+    image: postgres:9.3
+    environment:
+      - POSTGRES_DB=yiinetwork
+      - POSTGRES_USER=yiinetwork
+      - POSTGRES_PASSWORD=yiinetwork
+    ports:
+      - 5432:5432
+    volumes:
+      - db_data:/var/lib/postgresql/data
+
+volumes:
+  db_data: ~

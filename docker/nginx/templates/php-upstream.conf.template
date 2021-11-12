@@ -1,0 +1,3 @@
+upstream php-upstream {
+    server $PHP_FPM_ADDRESS:$PHP_FPM_PORT;
+}
