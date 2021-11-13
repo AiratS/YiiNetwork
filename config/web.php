@@ -5,8 +5,10 @@ $db = require __DIR__ . '/db.php';
 
 $config = [
     'id' => 'basic',
+    'name' => 'YiiNetwork',
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'],
+    'defaultRoute' => 'auth/login',
     'aliases' => [
         '@bower' => '@vendor/bower-asset',
         '@npm'   => '@vendor/npm-asset',
@@ -53,6 +55,14 @@ $config = [
         */
     ],
     'params' => $params,
+
+    'container' => [
+        'definitions' => [
+            'app\components\repository\UserRepository' => [
+                'class' => 'app\components\repository\UserRepository',
+            ],
+        ],
+    ],
 ];
 
 if (YII_ENV_DEV) {
