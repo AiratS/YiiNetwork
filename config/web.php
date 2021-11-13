@@ -45,17 +45,13 @@ $config = [
             ],
         ],
         'db' => $db,
-        /*
         'urlManager' => [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
-            'rules' => [
-            ],
+            'rules' => [],
         ],
-        */
     ],
     'params' => $params,
-
     'container' => [
         'definitions' => [
             'app\components\repository\UserRepository' => [
