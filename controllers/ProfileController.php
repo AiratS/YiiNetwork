@@ -45,6 +45,7 @@ class ProfileController extends Controller
 
     public function actionIndex()
     {
+        $this->view->title = 'Profile';
         $model = new ProfileForm();
 
         if ($model->load(Yii::$app->request->post()) && $model->validate()) {

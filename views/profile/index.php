@@ -8,10 +8,12 @@ use yii\helpers\Html;
 
 ?>
 
+<h2><?= $this->title ?></h2>
+
 <?php $form = ActiveForm::begin(); ?>
     <?= $form->field($model, 'surname')->label('Surname') ?>
     <?= $form->field($model, 'name')->label('Name') ?>
-    <?= $form->field($model, 'email')->textInput(['readonly' => true])->label('Email') ?>
+    <?= $form->field($model, 'email')->label('Email')->textInput(['readonly' => true]) ?>
     <div class="form-group">
         <?= Html::submitButton('Save changes', ['class' => 'btn btn-primary']) ?>
     </div>
