@@ -40,8 +40,20 @@ class LoginForm extends Model
         return [
             [['email', 'password'], 'required'],
             ['email', 'email'],
+            ['email', 'validateEmail'],
             ['password', 'validatePassword'],
         ];
+    }
+
+    public function validateEmail($attribute, $params)
+    {
+        if (!$this->hasErrors()) {
+            $user = $this->getUser();
+
+            if (!$user || !$user->isVerified()) {
+                $this->addError($attribute, 'Email is not verified.');
+            }
+        }
     }
 
     public function validatePassword($attribute, $params)
