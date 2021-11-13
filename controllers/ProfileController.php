@@ -62,8 +62,9 @@ class ProfileController extends Controller
      */
     public function actionDeleteProfile()
     {
+        $userId = Yii::$app->user->id;
         Yii::$app->user->logout();
-        $this->userRepository->deleteUser(Yii::$app->user->id);
+        $this->userRepository->deleteUser($userId);
 
         return $this->redirect(['auth/register']);
     }
