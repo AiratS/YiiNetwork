@@ -26,24 +26,25 @@ class AuthController extends Controller
      */
     public function actionRegister()
     {
+        $this->view->title = 'Registration';
         $model = new RegisterForm();
+        $user = null;
 
         if ($model->load(Yii::$app->request->post()) && $model->validate()) {
             $user = $model->createUser();
-            if ($user) {
-                return $this->render('verify-link', [
-                    'link' => $this->getVerificationLink($user),
-                ]);
-            }
         }
 
         return $this->render('register', [
             'model' => $model,
+            'link' => $user
+                ? $this->getVerificationLink($user)
+                : null,
         ]);
     }
 
     public function actionLogin()
     {
+        $this->view->title = 'Login';
         $model = new LoginForm();
 
         if ($model->load(Yii::$app->request->post()) && $model->login()) {

@@ -7,6 +7,8 @@ use yii\helpers\Html;
 
 ?>
 
+<h2><?= $this->title ?></h2>
+
 <?php $form = ActiveForm::begin(); ?>
     <?= $form->field($model, 'email')->label('Email') ?>
     <?= $form->field($model, 'password')->label('Password')->passwordInput() ?>
