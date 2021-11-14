@@ -40,8 +40,8 @@ class LoginForm extends Model
         return [
             [['email', 'password'], 'required'],
             ['email', 'email'],
-            ['email', 'validateEmail'],
             ['password', 'validatePassword'],
+            ['email', 'validateEmail'],
         ];
     }
 
