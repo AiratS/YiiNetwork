@@ -35,7 +35,7 @@ AppAsset::register($this);
     ?>
 
     <?php if (!Yii::$app->user->isGuest) { ?>
-        <?=  Html::a('Logout', ['profile/logout']) ?>
+        <?= Html::a('Logout', ['profile/logout']) ?>
     <?php } ?>
 
     <?php NavBar::end(); ?>

@@ -16,8 +16,6 @@ use yii\helpers\Html;
     <?= $form->field($model, 'email')->label('Email')->textInput(['readonly' => true]) ?>
     <div class="form-group">
         <?= Html::submitButton('Save changes', ['class' => 'btn btn-primary']) ?>
-    </div>
-    <div class="form-group">
         <?= Html::a('Delete profile', ['profile/delete-profile'], [
             'class' => 'btn btn-danger',
             'data' => [
